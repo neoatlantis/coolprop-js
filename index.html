@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Coolprop JS</title>
+
+    <script src="./scripts/lib/require.js" data-main="main"></script>
+    <script>
+        requirejs.config({
+            'baseUrl': './scripts',
+            'paths': {
+                jquery: 'lib/jquery-3.1.1.min',
+                coolprop: 'lib/coolprop-6.1.0',
+            }
+        });
+    </script>
+
+    <style>
+        .condition{
+            border: 1.5px solid;
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        .condition-use{
+            border-color: #0000FF !important;
+            background: #AAAAFF !important;
+        }
+        .condition-possible{
+            border-color: #FFCC00;
+            background: #FFFFAA;
+        }
+        .condition-impossible{
+            border-color: #000000;
+            background: #EEEEEE;
+        }
+
+        input[type="checkbox"]{
+            width: 1.5em;
+            height: 1.5em;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<select id="fluidname">
+</select>
+
+<div id="conditions">
+
+    <div class="condition condition-possible" data-name="P">
+        <div class="input-area">
+            <input type="checkbox"/>
+            Pressure:
+            <input type="text" />
+            Pa
+        </div>
+    </div>
+
+    <div class="condition condition-possible" data-name="T">
+        <div class="input-area">
+            <input type="checkbox"/>
+            Temperature:
+            <input type="text" />
+            K
+        </div>
+    </div>
+
+    <div class="condition condition-possible" data-name="Q">
+        <div class="input-area">
+            <input type="checkbox"/>
+            Vapor Quality:
+            <input type="text" />
+            %
+        </div>
+    </div>
+
+</div>
+
+
+<button id="calc" type="button" disabled>
+Get Properties
+</button>
+
+</body>
+</html>
