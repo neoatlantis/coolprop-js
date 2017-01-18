@@ -8,6 +8,12 @@ return function(givenVariables){
         ['P', 'Q'],
         ['P', 'T'],
         ['T', 'Q'],
+        ['D', 'P'],
+        ['D', 'T'],
+        ['H', 'P'],
+        ['H', 'S'],
+        ['T', 'S'],
+        ['P', 'S'],
     ];
 
     var possibles = [];

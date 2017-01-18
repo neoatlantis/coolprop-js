@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <title>Coolprop JS</title>
 
@@ -15,6 +17,16 @@
     </script>
 
     <style>
+        body{
+            font-size: 1.0em;
+        }
+
+        .fluidchoose {
+            border: 1.5px solid;
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
         .condition{
             border: 1.5px solid;
             padding: 0.5em;
@@ -39,44 +51,80 @@
             height: 1.5em;
         }
 
+        .unitio-readonly{
+            font-color: #000000;
+            border: none;
+        }
+
     </style>
 
 </head>
 <body>
 
-<select id="fluidname">
-</select>
-
-<div id="conditions">
-
-    <div class="condition condition-possible" data-name="P">
-        <div class="input-area">
-            <input type="checkbox"/>
-            Pressure:
-            <input type="text" />
-            Pa
-        </div>
-    </div>
-
-    <div class="condition condition-possible" data-name="T">
-        <div class="input-area">
-            <input type="checkbox"/>
-            Temperature:
-            <input type="text" />
-            K
-        </div>
-    </div>
-
-    <div class="condition condition-possible" data-name="Q">
-        <div class="input-area">
-            <input type="checkbox"/>
-            Vapor Quality:
-            <input type="text" />
-            %
-        </div>
-    </div>
-
+<div class="fluidchoose">
+    Choose fluid:
+    <select id="fluidname"></select>
+    <table id="characteristics">
+        <th><tr>
+            <td>Name</td>
+            <td>Value</td>
+        </tr></th>
+        <tr class="characteristic" data-name="Pcrit" data-unit="P">
+            <td>Critical Pressure</td>
+            <td><span class="unitio"></span></td>
+        </tr>
+        <tr class="characteristic" data-name="Tcrit" data-unit="T">
+            <td>Critical Temperature</td>
+            <td><span class="unitio"></span></td>
+        </tr>
+    </table>
 </div>
+
+<table id="conditions">
+
+    <th> <tr>
+        <td>Input</td>
+        <td>Name</td>
+        <td>Value</td>
+    </tr> </th>
+
+    <tr class="condition condition-possible" data-name="P">
+        <td> <input type="checkbox"/> </td>
+        <td> Pressure </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+
+    <tr class="condition condition-possible" data-name="T">
+        <td> <input type="checkbox"/> </td>
+        <td> Temperature </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+
+    <tr class="condition condition-possible" data-name="D">
+        <td> <input type="checkbox"/> </td>
+        <td> Mass Density <strong>or</strong> Specific Volume </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+    
+    <tr class="condition condition-possible" data-name="Q">
+        <td> <input type="checkbox"/> </td>
+        <td> Vapor Quality </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+
+    <tr class="condition condition-possible" data-name="H">
+        <td> <input type="checkbox"/> </td>
+        <td> Enthalpy </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+
+    <tr class="condition condition-possible" data-name="S">
+        <td> <input type="checkbox"/> </td>
+        <td> Entropy </td>
+        <td> <span class="unitio"></span> </td>
+    </tr>
+
+</table>
 
 
 <button id="calc" type="button" disabled>

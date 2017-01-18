@@ -2,10 +2,14 @@ require([
     'jquery',
     'properties',
     'queryschema',
+    'units',
+
+    'jquery.unitio',
 ], function(
     $,
     cp,
-    qs
+    qs,
+    units
 ){
 //////////////////////////////////////////////////////////////////////////////
 
@@ -66,10 +70,10 @@ function onConditionUseClicked(){
             $(this).hasClass('condition-impossible')
         );
 
-        $(this).find('input')
-            .attr('readonly', disabled)
+        $(this).find('input[type="checkbox"]')
             .attr('disabled', disabled)
         ;
+        $(this).find('.unitio').unitio('disable', disabled);
     });
 
     $('#calc').attr('disabled', !canCalc);
@@ -83,9 +87,13 @@ function onCalcClicked(){
     var fluidName = $('#fluidname').val();
     var args = [];
     $('.condition-use').each(function(){
-        args.push($(this).attr('data-name'));
+        var varname = $(this).attr('data-name'),
+            uservalue = parseFloat($(this).find('input[type="text"]').val());
+        args.push(varname);
         args.push(
-            parseFloat( $(this).find('input[type="text"]').val() )
+            $(this).find('.unitio')
+                .unitio('set', uservalue)
+                .unitio('get')
         );
     });
 
@@ -97,11 +105,14 @@ function onCalcClicked(){
             args[2], args[3],
             fluidName
         );
-        $(this).find('input[type="text"]').val(v);
+        $(this).find('.unitio').unitio('set', v, true);
     });
 
-//    var H = cp.__PropsSI('H', args[0], args[1], args[2], args[3], fluidName);
-//    console.log(H);
+    $('.characteristic').each(function(){
+        var varname = $(this).attr('data-name');
+        var v = cp.__Props1SI(varname, fluidName);
+        $(this).find('.unitio').unitio('set', v, true);
+    });
 }
 
 
@@ -121,9 +132,21 @@ $(function(){
     $('#calc').click(onCalcClicked);
 
 
-    $('.condition').find('input[type="checkbox"]').click(onConditionUseClicked);
+    $('.condition').find('input[type="checkbox"]')
+        .click(onConditionUseClicked)
+    ;
 
+    $('.condition').each(function(){
+        var varname = $(this).attr('data-name');
+        $(this).find('.unitio').unitio(units[varname]);
+    });
 
+    $('.characteristic').each(function(){
+        var unitname = $(this).attr('data-unit');
+        $(this).find('.unitio')
+            .unitio(units[unitname]).unitio('disable', true)
+        ;
+    });
 
 });
 
