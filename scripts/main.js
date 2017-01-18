@@ -108,6 +108,13 @@ function onCalcClicked(){
         $(this).find('.unitio').unitio('set', v, true);
     });
 
+}
+
+
+
+// on fluid name changed
+function onFluidNameChanged(){
+    var fluidName = $(this).val();
     $('.characteristic').each(function(){
         var varname = $(this).attr('data-name');
         var v = cp.__Props1SI(varname, fluidName);
@@ -127,6 +134,7 @@ $(function(){
             value: key,
         }).text(key).appendTo('#fluidname');
     };
+    $('#fluidname').on('change', onFluidNameChanged);
 
 
     $('#calc').click(onCalcClicked);

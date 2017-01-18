@@ -19,6 +19,11 @@
     <style>
         body{
             font-size: 1.0em;
+            font-family: monospace;
+        }
+
+        thead{
+            font-weight: bold;
         }
 
         .fluidchoose {
@@ -65,10 +70,11 @@
     Choose fluid:
     <select id="fluidname"></select>
     <table id="characteristics">
-        <th><tr>
+        <thead><tr>
             <td>Name</td>
             <td>Value</td>
-        </tr></th>
+        </tr></thead>
+        <tbody>
         <tr class="characteristic" data-name="Pcrit" data-unit="P">
             <td>Critical Pressure</td>
             <td><span class="unitio"></span></td>
@@ -77,16 +83,19 @@
             <td>Critical Temperature</td>
             <td><span class="unitio"></span></td>
         </tr>
+        </tbody>
     </table>
 </div>
 
 <table id="conditions">
 
-    <th> <tr>
+    <thead> <tr>
         <td>Input</td>
         <td>Name</td>
         <td>Value</td>
-    </tr> </th>
+    </tr> </thead>
+
+    <tbody>
 
     <tr class="condition condition-possible" data-name="P">
         <td> <input type="checkbox"/> </td>
@@ -102,7 +111,7 @@
 
     <tr class="condition condition-possible" data-name="D">
         <td> <input type="checkbox"/> </td>
-        <td> Mass Density <strong>or</strong> Specific Volume </td>
+        <td> Mass Density / Spec. Volume </td>
         <td> <span class="unitio"></span> </td>
     </tr>
     
@@ -123,6 +132,8 @@
         <td> Entropy </td>
         <td> <span class="unitio"></span> </td>
     </tr>
+
+    </tbody>
 
 </table>
 

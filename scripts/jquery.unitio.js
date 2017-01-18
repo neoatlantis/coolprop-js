@@ -63,7 +63,12 @@ if('get' == action){
 
 
 if(undefined !== this.data('unitio.value')){
-    this.find('input').val(unitoutputFunc(this.data('unitio.value')));
+    var outputv = unitoutputFunc(this.data('unitio.value'));
+    if(Math.abs(outputv) >= 0.001){
+        this.find('input').val(Math.round(outputv * 10000.0) / 10000.0);
+    } else {
+        this.find('input').val(outputv);
+    }
 } else {
     this.find('input').val('');
 }
