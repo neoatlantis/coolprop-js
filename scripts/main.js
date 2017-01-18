@@ -1,12 +1,11 @@
 require([
-    'jquery',
     'properties',
     'queryschema',
     'units',
 
     'jquery.unitio',
+    'bootstrap',
 ], function(
-    $,
     cp,
     qs,
     units

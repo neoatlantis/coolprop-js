@@ -1,4 +1,4 @@
-define(['jquery'], function($){
+(function($){
 $.fn.unitio = function(arg1, arg2, arg3){
 //////////////////////////////////////////////////////////////////////////////
 var unitconf;
@@ -13,9 +13,10 @@ if(!inited){
     this.data('unitio.id', unitid);
 
     this.empty();
-    $('<input>', { type: 'text' }).appendTo(this);
+    $('<input>', { type: 'text' }).addClass('unitio-input').appendTo(this);
     $('<button>', { type: 'button' })
         .appendTo(this)
+        .addClass('unitio-button')
         .click((function(me){
             return function(){
                 me.unitio('switch');
@@ -77,4 +78,4 @@ return this;
 
 //////////////////////////////////////////////////////////////////////////////
 }
-});
+})(jQuery);

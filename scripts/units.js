@@ -23,26 +23,26 @@ ret.P.output["atm"] = function(o){ return o / 101325.0; };
 //----------------------------------------------------------------------------
 
 ret.T = {
-    list: ['K', 'Celsius', 'Fahrenheit'],
+    list: ['K', '\u00B0C', '\u00B0F'],
     input: {}, output: {}
 };
 ret.T.input["K"] = function(i){ return i; };
 ret.T.output["K"] = function(o){ return o; };
-ret.T.input["Celsius"] = function(i){ return 273.15 + i; };
-ret.T.output["Celsius"] = function(o){ return o - 273.15; };
-ret.T.input["Fahrenheit"] = function(i){ return (459.67 + i) * 5.0 / 9.0; };
-ret.T.output["Fahrenheit"] = function(o){ return o * 9.0 / 5.0 - 459.67; };
+ret.T.input["\u00B0C"] = function(i){ return 273.15 + i; };
+ret.T.output["\u00B0C"] = function(o){ return o - 273.15; };
+ret.T.input["\u00B0F"] = function(i){ return (459.67 + i) * 5.0 / 9.0; };
+ret.T.output["\u00B0F"] = function(o){ return o * 9.0 / 5.0 - 459.67; };
 
 //----------------------------------------------------------------------------
 
 ret.D = {
-    list: ['kg/m^3', 'm^3/kg'],
+    list: ['kg/m\u00B3', 'm\u00B3/kg'],
     input: {}, output: {},
 };
-ret.D.input["kg/m^3"] = function(i){ return i; };
-ret.D.output["kg/m^3"] = function(o){ return o; };
-ret.D.input["m^3/kg"] = function(i){ return 1.0 / i; };
-ret.D.output["m^3/kg"] = function(o){ return 1.0 / o; };
+ret.D.input["kg/m\u00B3"] = function(i){ return i; };
+ret.D.output["kg/m\u00B3"] = function(o){ return o; };
+ret.D.input["m\u00B3/kg"] = function(i){ return 1.0 / i; };
+ret.D.output["m\u00B3/kg"] = function(o){ return 1.0 / o; };
 
 //----------------------------------------------------------------------------
 

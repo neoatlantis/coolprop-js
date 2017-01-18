@@ -5,55 +5,34 @@
     <meta charset="utf-8" />
     <title>Coolprop JS</title>
 
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+    <script src="./scripts/lib/jquery-3.1.1.min.js"></script>
     <script src="./scripts/lib/require.js" data-main="main"></script>
     <script>
         requirejs.config({
             'baseUrl': './scripts',
             'paths': {
-                jquery: 'lib/jquery-3.1.1.min',
                 coolprop: 'lib/coolprop-6.1.0',
+                bootstrap: 'lib/bootstrap.min',
             }
         });
     </script>
 
     <style>
-        body{
-            font-size: 1.0em;
-            font-family: monospace;
-        }
-
-        thead{
-            font-weight: bold;
-        }
-
-        .fluidchoose {
-            border: 1.5px solid;
-            padding: 0.5em;
-            margin: 0.5em;
-        }
 
         .condition{
-            border: 1.5px solid;
-            padding: 0.5em;
-            margin: 0.5em;
+            /* border: 1.5px solid;*/
         }
 
         .condition-use{
-            border-color: #0000FF !important;
             background: #AAAAFF !important;
         }
         .condition-possible{
-            border-color: #FFCC00;
             background: #FFFFAA;
         }
         .condition-impossible{
-            border-color: #000000;
-            background: #EEEEEE;
-        }
-
-        input[type="checkbox"]{
-            width: 1.5em;
-            height: 1.5em;
+            /*background: #EEEEEE;*/
         }
 
         .unitio-readonly{
@@ -61,86 +40,110 @@
             border: none;
         }
 
+        .unitio-input{
+            text-align: right;
+            font-family: monospace;
+        }
+
+        .unitio-button{
+            background: none;
+            border: none;
+            font-weight: bold;
+            min-width: 5em;
+            text-align: left;
+        }
+
+        #characteristics input[type="checkbox"]{
+            border: #FF0000 1px solid;
+            background: none;
+            width: 80%;
+            height: 80%;
+        }
+
     </style>
 
 </head>
 <body>
+<div class="container-fluid" />
 
-<div class="fluidchoose">
-    Choose fluid:
-    <select id="fluidname"></select>
-    <table id="characteristics">
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Choose Fluid</div>
+    <div class="panel-body">
+        <select id="fluidname" class="form-control"></select>
+    </div>
+    <table id="characteristics" class="table table-responsive table-condensed">
         <thead><tr>
-            <td>Name</td>
-            <td>Value</td>
+            <th>Input</th>
+            <th>Name</th>
+            <th>Value</th>
         </tr></thead>
         <tbody>
+
+
+
         <tr class="characteristic" data-name="Pcrit" data-unit="P">
+            <td></td>
             <td>Critical Pressure</td>
             <td><span class="unitio"></span></td>
         </tr>
         <tr class="characteristic" data-name="Tcrit" data-unit="T">
+            <td></td>
             <td>Critical Temperature</td>
             <td><span class="unitio"></span></td>
         </tr>
+
+
+
+        <tr class="condition condition-possible" data-name="P">
+            <td> <input type="checkbox"/> </td>
+            <td> Pressure </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition condition-possible" data-name="T">
+            <td> <input type="checkbox"/> </td>
+            <td> Temperature </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition condition-possible" data-name="D">
+            <td> <input type="checkbox"/> </td>
+            <td> Mass Density / Spec. Volume </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+        
+        <tr class="condition condition-possible" data-name="Q">
+            <td> <input type="checkbox"/> </td>
+            <td> Vapor Quality </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition condition-possible" data-name="H">
+            <td> <input type="checkbox"/> </td>
+            <td> Enthalpy </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition condition-possible" data-name="S">
+            <td> <input type="checkbox"/> </td>
+            <td> Entropy </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
         </tbody>
     </table>
+
+    <div class="panel-footer">
+        <button id="calc" type="button" class="btn btn-primary" disabled>
+        Get Properties
+        </button>
+    </div>
 </div>
 
-<table id="conditions">
-
-    <thead> <tr>
-        <td>Input</td>
-        <td>Name</td>
-        <td>Value</td>
-    </tr> </thead>
-
-    <tbody>
-
-    <tr class="condition condition-possible" data-name="P">
-        <td> <input type="checkbox"/> </td>
-        <td> Pressure </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-
-    <tr class="condition condition-possible" data-name="T">
-        <td> <input type="checkbox"/> </td>
-        <td> Temperature </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-
-    <tr class="condition condition-possible" data-name="D">
-        <td> <input type="checkbox"/> </td>
-        <td> Mass Density / Spec. Volume </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-    
-    <tr class="condition condition-possible" data-name="Q">
-        <td> <input type="checkbox"/> </td>
-        <td> Vapor Quality </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-
-    <tr class="condition condition-possible" data-name="H">
-        <td> <input type="checkbox"/> </td>
-        <td> Enthalpy </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-
-    <tr class="condition condition-possible" data-name="S">
-        <td> <input type="checkbox"/> </td>
-        <td> Entropy </td>
-        <td> <span class="unitio"></span> </td>
-    </tr>
-
-    </tbody>
-
-</table>
 
 
-<button id="calc" type="button" disabled>
-Get Properties
-</button>
-
+</div>
 </body>
 </html>
