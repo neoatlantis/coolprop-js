@@ -1,3 +1,5 @@
+require(['math'], function(math){
+
 (function($){
 $.fn.unitio = function(arg1, arg2, arg3){
 //////////////////////////////////////////////////////////////////////////////
@@ -48,8 +50,12 @@ if('disable' == action){
 }
 
 if('set' == action){
-    var newvalue = arg2,
-        isInternalValue = arg3;
+    try{
+        var newvalue = math.eval(arg2);
+    } catch(e){
+        var newvalue = NaN;
+    }
+    var isInternalValue = arg3;
     if(isInternalValue){
         this.data('unitio.value', newvalue);
     } else {
@@ -79,3 +85,5 @@ return this;
 //////////////////////////////////////////////////////////////////////////////
 }
 })(jQuery);
+
+});

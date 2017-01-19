@@ -6,7 +6,7 @@ ret = {};
 //----------------------------------------------------------------------------
 
 ret.P = {
-    list: ['Pa', 'kPa', 'MPa', 'bar', 'atm'],
+    list: ['Pa', 'kPa', 'MPa', 'bar', 'atm', 'psi'],
     input: {}, output: {}
 };
 ret.P.input["Pa"] = function(i){ return i; };
@@ -19,6 +19,8 @@ ret.P.input["bar"] = function(i){ return i * 100000.0; };
 ret.P.output["bar"] = function(o){ return o / 100000.0; };
 ret.P.input["atm"] = function(i){ return i * 101325.0; };
 ret.P.output["atm"] = function(o){ return o / 101325.0; };
+ret.P.input["psi"] = function(i){ return i * 6894.757293168; };
+ret.P.output["psi"] = function(o){ return o / 6894.757293168; };
 
 //----------------------------------------------------------------------------
 

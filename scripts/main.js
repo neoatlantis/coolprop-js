@@ -87,7 +87,7 @@ function onCalcClicked(){
     var args = [];
     $('.condition-use').each(function(){
         var varname = $(this).attr('data-name'),
-            uservalue = parseFloat($(this).find('input[type="text"]').val());
+            uservalue = $(this).find('input[type="text"]').val();
         args.push(varname);
         args.push(
             $(this).find('.unitio')
