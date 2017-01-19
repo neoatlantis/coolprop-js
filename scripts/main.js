@@ -155,6 +155,8 @@ $(function(){
         ;
     });
 
+    $('.loading').hide();
+    $('.loaded').show();
 });
 
 

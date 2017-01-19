@@ -61,11 +61,27 @@
             height: 80%;
         }
 
+        .loaded{
+            display: none
+        }
+
     </style>
 
 </head>
 <body>
-<div class="container-fluid" />
+
+<noscript>
+    <div class="alert alert-danger">
+        You must enable Javascript to use.
+    </div>
+</noscript>
+
+<div class="alert alert-info loading">
+Loading, please wait...
+</div>
+
+
+<div class="container-fluid loaded" />
 
 
 
