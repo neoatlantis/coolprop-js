@@ -6,8 +6,10 @@
     <title>Coolprop JS</title>
 
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/magicsuggest-min.css" />
 
-    <script src="./scripts/lib/jquery-3.1.1.min.js"></script>
+    <script src="./scripts/lib/jquery.min.js"></script>
+    <script src="./scripts/lib/magicsuggest-min.js"></script>
     <script src="./scripts/lib/require.js" data-main="main"></script>
     <script>
         requirejs.config({
@@ -86,14 +88,18 @@ Loading, please wait...
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Choose Fluid</div>
+    <div class="panel-heading">
+        Choose Fluid
+        <strong id="fluiddisplay"></strong>
+    </div>
     <div class="panel-body">
-        <select id="fluidname" class="form-control"></select>
+        <div id="fluidname"></div>
     </div>
     <table id="characteristics" class="table table-responsive table-condensed">
         <thead><tr>
-            <th>Input</th>
+            <th>Input?</th>
             <th>Name</th>
+            <th></th>
             <th>Value</th>
         </tr></thead>
         <tbody>
@@ -103,21 +109,25 @@ Loading, please wait...
         <tr class="characteristic" data-name="PTRIPLE" data-unit="P">
             <td></td>
             <td>Triple Point Pressure</td>
+            <td>p<sub>trip</sub></td>
             <td><span class="unitio"></span></td>
         </tr>
         <tr class="characteristic" data-name="TTRIPLE" data-unit="T">
             <td></td>
             <td>Triple Point Temperature</td>
+            <td>T<sub>trip</sub></td>
             <td><span class="unitio"></span></td>
         </tr>
         <tr class="characteristic" data-name="Pcrit" data-unit="P">
             <td></td>
             <td>Critical Pressure</td>
+            <td>p<sub>crit</sub></td>
             <td><span class="unitio"></span></td>
         </tr>
         <tr class="characteristic" data-name="Tcrit" data-unit="T">
             <td></td>
             <td>Critical Temperature</td>
+            <td>T<sub>crit</sub></td>
             <td><span class="unitio"></span></td>
         </tr>
 
@@ -126,36 +136,42 @@ Loading, please wait...
         <tr class="condition condition-possible" data-name="P">
             <td> <input type="checkbox"/> </td>
             <td> Pressure </td>
+            <td>p</td>
             <td> <span class="unitio"></span> </td>
         </tr>
 
         <tr class="condition condition-possible" data-name="T">
             <td> <input type="checkbox"/> </td>
             <td> Temperature </td>
+            <td>T</td>
             <td> <span class="unitio"></span> </td>
         </tr>
 
         <tr class="condition condition-possible" data-name="D">
             <td> <input type="checkbox"/> </td>
             <td> Mass Density / Spec. Volume </td>
+            <td></td>
             <td> <span class="unitio"></span> </td>
         </tr>
         
         <tr class="condition condition-possible" data-name="Q">
             <td> <input type="checkbox"/> </td>
             <td> Vapor Quality </td>
+            <td>x</td>
             <td> <span class="unitio"></span> </td>
         </tr>
 
         <tr class="condition condition-possible" data-name="H">
             <td> <input type="checkbox"/> </td>
             <td> Enthalpy </td>
+            <td>h</td>
             <td> <span class="unitio"></span> </td>
         </tr>
 
         <tr class="condition condition-possible" data-name="S">
             <td> <input type="checkbox"/> </td>
             <td> Entropy </td>
+            <td>s</td>
             <td> <span class="unitio"></span> </td>
         </tr>
 

@@ -1,4 +1,5 @@
 require([
+    'ui.fluidselector',
     'properties',
     'queryschema',
     'units',
@@ -6,12 +7,14 @@ require([
     'jquery.unitio',
     'bootstrap',
 ], function(
+    registerFluidSelectionChanged,
     cp,
     qs,
     units
 ){
 //////////////////////////////////////////////////////////////////////////////
 
+var currentFluidName;
 
 
 // on condition selection changed
@@ -83,7 +86,7 @@ function onConditionUseClicked(){
 // on calc button clicked
 
 function onCalcClicked(){
-    var fluidName = $('#fluidname').val();
+    var fluidName = currentFluidName;
     var args = [];
     $('.condition-use').each(function(){
         var varname = $(this).attr('data-name'),
@@ -112,29 +115,25 @@ function onCalcClicked(){
 
 
 // on fluid name changed
-function onFluidNameChanged(){
-    var fluidName = $(this).val();
+function onFluidNameChanged(fluidName){
+    currentFluidName = fluidName;
     $('.characteristic').each(function(){
         var varname = $(this).attr('data-name');
         var v = cp.__Props1SI(varname, fluidName);
         $(this).find('.unitio').unitio('set', v, true);
     });
-}
 
+    var aliases = cp.FLUIDS[currentFluidName];
+    $('#fluiddisplay').text(
+        currentFluidName + " (" +  aliases.join(",") + ")"
+    );
+}
+registerFluidSelectionChanged(onFluidNameChanged);
 
 
 // on page loaded
 
 $(function(){
-
-    $('#fluidname').empty();
-    for(var key in cp.FLUIDS){
-        $('<option>', {
-            value: key,
-        }).text(key).appendTo('#fluidname');
-    };
-    $('#fluidname').on('change', onFluidNameChanged);
-
 
     $('#calc').click(onCalcClicked);
 
@@ -154,6 +153,7 @@ $(function(){
             .unitio(units[unitname]).unitio('disable', true)
         ;
     });
+
 
     $('.loading').hide();
     $('.loaded').show();
