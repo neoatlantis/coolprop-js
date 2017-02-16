@@ -73,6 +73,14 @@ ret.S = {
 ret.S.input["kJ/kg/K"] = function(i){ return i * 1000.0; };
 ret.S.output["kJ/kg/K"] = function(o){ return o / 1000.0; };
 
+//----------------------------------------------------------------------------
+
+ret.M = {
+    list: ['g/mol'],
+    input: {}, output: {},
+};
+ret.M.input["g/mol"] = function(i){ return i / 1000.0; };
+ret.M.output["g/mol"] = function(o){ return o * 1000.0; };
 
 
 return ret;

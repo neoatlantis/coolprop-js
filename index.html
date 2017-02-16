@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/magicsuggest-min.css" />
+    <link rel="stylesheet" href="./css/unitio.css" />
 
     <script src="./scripts/lib/jquery.min.js"></script>
     <script src="./scripts/lib/magicsuggest-min.js"></script>
@@ -36,24 +37,6 @@
         }
         .condition-impossible{
             /*background: #EEEEEE;*/
-        }
-
-        .unitio-readonly{
-            font-color: #000000;
-            border: none;
-        }
-
-        .unitio-input{
-            text-align: right;
-            font-family: monospace;
-        }
-
-        .unitio-button{
-            background: none;
-            border: none;
-            font-weight: bold;
-            min-width: 5em;
-            text-align: left;
         }
 
         #characteristics input[type="checkbox"]{
@@ -95,6 +78,34 @@ Loading, please wait...
     <div class="panel-body">
         <div id="fluidname"></div>
     </div>
+
+    <table class="table table-responsive table-condensed">
+        <thead><tr>
+            <th class="text-center">Molar Mass</th>
+            <th class="text-center">p<sub>triple</sub></th>
+            <th class="text-center">T<sub>triple</sub></th>
+            <th class="text-center">p<sub>crit</sub></th>
+            <th class="text-center">T<sub>crit</sub></th>
+        </tr></thead>
+        <tbody><tr>
+            <td class="characteristic" data-name="M" data-unit="M">
+                <span class="unitio unitio-stack"></span>
+            </td>
+            <td class="characteristic" data-name="PTRIPLE" data-unit="P">
+                <span class="unitio unitio-stack"></span>
+            </td>
+            <td class="characteristic" data-name="TTRIPLE" data-unit="T">
+                <span class="unitio unitio-stack"></span>
+            </td>
+            <td class="characteristic" data-name="Pcrit" data-unit="P">
+                <span class="unitio unitio-stack"></span>
+            </td>
+            <td class="characteristic" data-name="Tcrit" data-unit="T">
+                <span class="unitio unitio-stack"></span>
+            </td>
+        </tr></tbody>
+    </table>
+
     <table id="characteristics" class="table table-responsive table-condensed">
         <thead><tr>
             <th>Input?</th>
@@ -105,19 +116,7 @@ Loading, please wait...
         <tbody>
 
 
-
-        <tr class="characteristic" data-name="PTRIPLE" data-unit="P">
-            <td></td>
-            <td>Triple Point Pressure</td>
-            <td>p<sub>trip</sub></td>
-            <td><span class="unitio"></span></td>
-        </tr>
-        <tr class="characteristic" data-name="TTRIPLE" data-unit="T">
-            <td></td>
-            <td>Triple Point Temperature</td>
-            <td>T<sub>trip</sub></td>
-            <td><span class="unitio"></span></td>
-        </tr>
+        <!--
         <tr class="characteristic" data-name="Pcrit" data-unit="P">
             <td></td>
             <td>Critical Pressure</td>
@@ -130,8 +129,7 @@ Loading, please wait...
             <td>T<sub>crit</sub></td>
             <td><span class="unitio"></span></td>
         </tr>
-
-
+        -->
 
         <tr class="condition condition-possible" data-name="P">
             <td> <input type="checkbox"/> </td>
@@ -180,7 +178,7 @@ Loading, please wait...
 
     <div class="panel-footer">
         <button id="calc" type="button" class="btn btn-primary" disabled>
-        Get Properties
+        Calculate Properties
         </button>
     </div>
 </div>

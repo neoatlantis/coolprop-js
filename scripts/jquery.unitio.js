@@ -15,7 +15,10 @@ if(!inited){
     this.data('unitio.id', unitid);
 
     this.empty();
-    $('<input>', { type: 'text' }).addClass('unitio-input').appendTo(this);
+    $('<input>', { type: 'text', placeholder: '#####' })
+        .addClass('unitio-input')
+        .appendTo(this)
+    ;
     $('<button>', { type: 'button' })
         .appendTo(this)
         .addClass('unitio-button')

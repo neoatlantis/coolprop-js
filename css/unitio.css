@@ -1,0 +1,35 @@
+.unitio-readonly{
+    font-color: #000000;
+    border: none;
+}
+
+.unitio-input{
+    text-align: right;
+    font-family: monospace;
+}
+
+.unitio-button{
+    background: none;
+    border: none;
+    font-weight: bold;
+    min-width: 5em;
+    text-align: left;
+}
+
+.unitio-inline .unitio-input{
+    width: 70%;
+}
+
+.unitio-inline .unitio-button{
+    width: 25%;
+}
+
+.unitio-stack .unitio-input{
+    width: 100%;
+    text-align: center;
+}
+
+.unitio-stack .unitio-button{
+    width: 100%;
+    text-align: center;
+}
