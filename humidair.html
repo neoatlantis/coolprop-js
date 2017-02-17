@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>Coolprop JS</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/magicsuggest-min.css" />
+    <link rel="stylesheet" href="./css/unitio.css" />
+
+    <script src="./scripts/lib/jquery.min.js"></script>
+    <script src="./scripts/lib/magicsuggest-min.js"></script>
+    <script src="./scripts/lib/require.js" data-main="humidair"></script>
+    <script>
+        requirejs.config({
+            'baseUrl': './scripts',
+            'paths': {
+                math: 'lib/math.min',
+                coolprop: 'lib/coolprop-6.1.0',
+                bootstrap: 'lib/bootstrap.min',
+            }
+        });
+    </script>
+
+    <style>
+
+        .condition{
+            /* border: 1.5px solid;*/
+        }
+
+        .condition-use{
+            background: #AAAAFF !important;
+        }
+
+        #characteristics input[type="checkbox"]{
+            border: #FF0000 1px solid;
+            background: none;
+            width: 80%;
+            height: 80%;
+        }
+
+        .loaded{
+            display: none
+        }
+
+    </style>
+
+</head>
+<body>
+
+<noscript>
+    <div class="alert alert-danger">
+        You must enable Javascript to use.
+    </div>
+</noscript>
+
+<div class="alert alert-info loading">
+Loading, please wait...
+</div>
+
+
+<div class="container-fluid loaded" />
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Humid Air
+    </div>
+
+    <table id="characteristics" class="table table-responsive table-condensed">
+        <thead><tr>
+            <th>Input?</th>
+            <th>Name</th>
+            <th></th>
+            <th>Value</th>
+        </tr></thead>
+        <tbody>
+
+
+        <!--
+        <tr class="characteristic" data-name="Pcrit" data-unit="P">
+            <td></td>
+            <td>Critical Pressure</td>
+            <td>p<sub>crit</sub></td>
+            <td><span class="unitio"></span></td>
+        </tr>
+        <tr class="characteristic" data-name="Tcrit" data-unit="T">
+            <td></td>
+            <td>Critical Temperature</td>
+            <td>T<sub>crit</sub></td>
+            <td><span class="unitio"></span></td>
+        </tr>
+        -->
+
+        <tr class="condition" data-name="P" data-unit="P">
+            <td> <input type="checkbox"/> </td>
+            <td> Pressure </td>
+            <td>p</td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="P_w" data-unit="P">
+            <td> <input type="checkbox"/> </td>
+            <td> Water Vapor Partial Pressure </td>
+            <td>p<sub>w</sub></td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="D" data-unit="T">
+            <td> <input type="checkbox"/> </td>
+            <td> Dew Point Temperature </td>
+            <td>T<sub>dp</sub></td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="T" data-unit="T">
+            <td> <input type="checkbox"/> </td>
+            <td> Dry Bulb Temperature </td>
+            <td>T<sub>db</sub></td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="B" data-unit="T">
+            <td> <input type="checkbox"/> </td>
+            <td> Wet Bulb Temperature </td>
+            <td>T<sub>wb</sub></td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="W" data-unit="Q">
+            <td> <input type="checkbox"/> </td>
+            <td> Humidity Ratio </td>
+            <td> kg(H<sub>2</sub>O) / kg(DryAir) </td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+        
+        <!--
+        <tr class="condition" data-name="Q">
+            <td> <input type="checkbox"/> </td>
+            <td> Vapor Quality </td>
+            <td>x</td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="H">
+            <td> <input type="checkbox"/> </td>
+            <td> Enthalpy </td>
+            <td>h</td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        <tr class="condition" data-name="S">
+            <td> <input type="checkbox"/> </td>
+            <td> Entropy </td>
+            <td>s</td>
+            <td> <span class="unitio"></span> </td>
+        </tr>
+
+        -->
+
+        </tbody>
+    </table>
+
+    <div class="panel-footer">
+        <button id="calc" type="button" class="btn btn-primary" disabled>
+        Calculate Properties
+        </button>
+    </div>
+</div>
+
+
+
+</div>
+</body>
+</html>
