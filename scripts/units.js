@@ -57,6 +57,18 @@ ret.Q.output["%"] = function(o){ return o * 100.0; };
 
 //----------------------------------------------------------------------------
 
+ret.HumRat = {
+    list: ['kg/kg', 'g/kg'],
+    input: {}, output: {},
+};
+ret.HumRat.input["kg/kg"] = function(i){ return i; };
+ret.HumRat.output["kg/kg"] = function(o){ return o; };
+ret.HumRat.input["g/kg"] = function(i){ return i / 1000.0; };
+ret.HumRat.output["g/kg"] = function(o){ return o * 1000.0; };
+
+
+//----------------------------------------------------------------------------
+
 ret.H = {
     list: ['kJ/kg'],
     input: {}, output: {},
@@ -72,6 +84,15 @@ ret.S = {
 };
 ret.S.input["kJ/kg/K"] = function(i){ return i * 1000.0; };
 ret.S.output["kJ/kg/K"] = function(o){ return o / 1000.0; };
+
+// ---------------------------------------------------------------------------
+
+ret.cmass = {
+    list: ['J/kg/K'],
+    input: {}, output: {},
+};
+ret.cmass.input["J/kg/K"] = function(i){ return i; };
+ret.cmass.output["J/kg/K"] = function(o){ return o; };
 
 //----------------------------------------------------------------------------
 

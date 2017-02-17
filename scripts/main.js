@@ -144,7 +144,11 @@ $(function(){
 
     $('.condition').each(function(){
         var varname = $(this).attr('data-name');
-        $(this).find('.unitio').unitio(units[varname]);
+        var unitname = $(this).attr('data-unit');
+        var indexname = varname;
+        if(unitname) indexname = unitname;
+        console.log(varname, unitname, indexname, units[indexname]);
+        $(this).find('.unitio').unitio(units[indexname]);
     });
 
     $('.characteristic').each(function(){
